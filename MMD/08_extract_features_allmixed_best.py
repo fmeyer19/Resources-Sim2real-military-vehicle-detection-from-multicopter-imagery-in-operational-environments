@@ -1,3 +1,13 @@
+"""
+08_extract_features_allmixed_best.py
+
+Erzeugt für jeden angegebenen Bildordner eine .npy-Feature-Datei.
+Alle Bilder werden mit demselben YOLOv26n-Modell verarbeitet.
+Die Feature Maps unmittelbar vor dem Detection Head werden abgegriffen
+und mittels Global Average Pooling zu einem Feature-Vektor pro Bild
+zusammengefasst.
+"""
+
 from pathlib import Path
 
 import cv2
@@ -13,15 +23,22 @@ from ultralytics import YOLO
 
 MODEL_PATH = r"<path to yolo26n.pt>"
 
-REAL_A_FOLDER = Path("<path to REAL_A Dataset for Baseline>")
-REAL_B_FOLDER = Path("<path to REAL_B Dataset for Baseline>")
-
-OUTPUT_FOLDER = Path("<path to output directory>")
+OUTPUT_FOLDER = Path(
+    r"<path to output directory>"
+)
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
-IMAGE_SIZE = 640
+IMAGE_SIZE = 960
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
+
+
+# Trage hier alle vorhandenen Datensatzordner ein.
+# Links: sauberer interner Name
+# Rechts: exakter Windows-Pfad zum Bildordner
+DATASETS = {
+    "mixed_arma_blender_best_values": r"<path to Mixed_Arma_Blender_Best_Values>",
+}
 
 
 # =========================
@@ -62,10 +79,12 @@ print("Feature hook registered successfully.")
 
 
 # =========================
-# HILFSFUNKTIONEN
+# FUNKTIONEN
 # =========================
 
 def get_image_paths(folder):
+    folder = Path(folder)
+
     image_paths = [
         p for p in folder.iterdir()
         if p.is_file() and p.suffix.lower() in IMAGE_EXTENSIONS
@@ -109,16 +128,21 @@ def extract_feature_vector(image_path):
     else:
         feature_vector = captured_features.mean(dim=(2, 3))
 
-    feature_vector = feature_vector.squeeze(0).cpu().numpy()
-
-    return feature_vector
+    return feature_vector.squeeze(0).cpu().numpy()
 
 
-def extract_features_for_folder(folder, dataset_name):
+def extract_features_for_dataset(dataset_name, folder):
     image_paths = get_image_paths(folder)
 
-    print(f"\nDataset: {dataset_name}")
-    print(f"Found images: {len(image_paths)}")
+    print("\n========================================")
+    print(f"Dataset: {dataset_name}")
+    print(f"Folder:  {folder}")
+    print(f"Images:  {len(image_paths)}")
+    print("========================================")
+
+    if len(image_paths) == 0:
+        print(f"WARNING: No images found for dataset: {dataset_name}")
+        return
 
     features = []
     valid_image_names = []
@@ -135,36 +159,24 @@ def extract_features_for_folder(folder, dataset_name):
 
     print(f"Feature matrix shape for {dataset_name}: {features.shape}")
 
-    return features, valid_image_names
+    feature_output_path = OUTPUT_FOLDER / f"{dataset_name}_features.npy"
+    names_output_path = OUTPUT_FOLDER / f"{dataset_name}_image_names.txt"
+
+    np.save(feature_output_path, features)
+
+    with open(names_output_path, "w", encoding="utf-8") as f:
+        for name in valid_image_names:
+            f.write(name + "\n")
+
+    print(f"Saved features:    {feature_output_path}")
+    print(f"Saved image names: {names_output_path}")
 
 
 # =========================
 # MAIN
 # =========================
 
-real_a_features, real_a_names = extract_features_for_folder(
-    REAL_A_FOLDER,
-    "real_A"
-)
-
-real_b_features, real_b_names = extract_features_for_folder(
-    REAL_B_FOLDER,
-    "real_B"
-)
-
-np.save(OUTPUT_FOLDER / "real_A_features.npy", real_a_features)
-np.save(OUTPUT_FOLDER / "real_B_features.npy", real_b_features)
-
-with open(OUTPUT_FOLDER / "real_A_image_names.txt", "w", encoding="utf-8") as f:
-    for name in real_a_names:
-        f.write(name + "\n")
-
-with open(OUTPUT_FOLDER / "real_B_image_names.txt", "w", encoding="utf-8") as f:
-    for name in real_b_names:
-        f.write(name + "\n")
-
-print("\nSaved feature files:")
-print(OUTPUT_FOLDER / "real_A_features.npy")
-print(OUTPUT_FOLDER / "real_B_features.npy")
+for dataset_name, folder in DATASETS.items():
+    extract_features_for_dataset(dataset_name, folder)
 
 print("\nDone.")
