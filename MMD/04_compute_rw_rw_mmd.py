@@ -10,7 +10,7 @@ from sklearn.metrics import pairwise_distances
 # =========================
 
 FEATURE_FOLDER = Path(
-    r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features_RW-RW_Baseline"
+    "<path to feature folder>"
 )
 
 REAL_A_FEATURES = FEATURE_FOLDER / "real_A_features.npy"

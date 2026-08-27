@@ -21,10 +21,10 @@ from ultralytics import YOLO
 # EINSTELLUNGEN
 # =========================
 
-MODEL_PATH = r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\yolo26n.pt"
+MODEL_PATH = r"<path to yolo26n.pt>"
 
 OUTPUT_FOLDER = Path(
-    r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features_all"
+    r"<path to output directory>"
 )
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
@@ -37,7 +37,7 @@ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 # Links: sauberer interner Name
 # Rechts: exakter Windows-Pfad zum Bildordner
 DATASETS = {
-    "mixed_arma_blender_best_values": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Arma_Blender_Best_Values",
+    "mixed_arma_blender_best_values": r"<path to Mixed_Arma_Blender_Best_Values>",
 }
 
 

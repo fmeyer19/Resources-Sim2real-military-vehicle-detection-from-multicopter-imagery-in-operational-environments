@@ -13,7 +13,7 @@ from sklearn.manifold import TSNE
 # EINSTELLUNGEN
 # =========================
 
-BASE_DIR = Path(r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy")
+BASE_DIR = Path(r"<path to base directory>")
 
 FEATURE_FOLDER = BASE_DIR / "features_all"
 MMD_CSV = BASE_DIR / "mmd_results" / "mmd_results_all.csv"

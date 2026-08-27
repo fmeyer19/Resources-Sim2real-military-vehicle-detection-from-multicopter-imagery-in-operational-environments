@@ -6,7 +6,7 @@ import pandas as pd
 # EINSTELLUNGEN
 # =========================
 
-BASE_DIR = Path(r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy")
+BASE_DIR = Path("<path to base directory>")
 
 INPUT_CSV = BASE_DIR / "mmd_results" / "mmd_results_all.csv"
 

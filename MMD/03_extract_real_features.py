@@ -11,12 +11,12 @@ from ultralytics import YOLO
 # EINSTELLUNGEN
 # =========================
 
-MODEL_PATH = r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\yolo26n.pt"
+MODEL_PATH = r"<path to yolo26n.pt>"
 
-REAL_A_FOLDER = Path(r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\RealWorld_500Images_1")
-REAL_B_FOLDER = Path(r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\RealWorld_500Images_2")
+REAL_A_FOLDER = Path("<path to REAL_A Dataset for Baseline>")
+REAL_B_FOLDER = Path("<path to REAL_B Dataset for Baseline>")
 
-OUTPUT_FOLDER = Path(r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features_RW-RW_Baseline")
+OUTPUT_FOLDER = Path("<path to output directory>")
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
 IMAGE_SIZE = 640

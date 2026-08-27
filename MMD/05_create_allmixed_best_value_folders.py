@@ -8,7 +8,7 @@ import csv
 # EINSTELLUNGEN
 # =========================
 
-BASE_DIR = Path(r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy")
+BASE_DIR = Path(r"<path to base directory>")
 
 RANDOM_SEED = 42
 TARGET_IMAGE_COUNT = 500

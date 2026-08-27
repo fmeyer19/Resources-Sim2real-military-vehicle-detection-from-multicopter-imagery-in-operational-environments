@@ -30,16 +30,16 @@ import matplotlib.pyplot as plt
 # ============================================================
 
 FEATURE_FILES = {
-    "RealWorldDirty A": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features_RW-RW_Baseline\real_A_features.npy",
+    "RealWorldDirty A": r"<path to real_A_features.npy>",
+    
+    "RealWorldDirty B": r"<path to real_B_features.npy>",
 
-    "RealWorldDirty B": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features_RW-RW_Baseline\real_B_features.npy",
-
-    # Später ergänzen:
-    # "Synthetic Raw": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features\synthetic_raw_features.npy",
-    # "Synthetic Blur": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features\synthetic_blur_features.npy",
-    # "Synthetic Compression": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features\synthetic_compression_features.npy",
-    # "Synthetic Fog": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features\synthetic_fog_features.npy",
-    # "Synthetic AllMixed": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features\synthetic_allmixed_features.npy",
+    # Später ergänzen:          
+    # "Synthetic Raw": r"<path to synthetic_raw_features.npy>",
+    # "Synthetic Blur": r"<path to synthetic_blur_features.npy>",
+    # "Synthetic Compression": r"<synthetic_compression_features.npy>",
+    # "Synthetic Fog": r"<synthetic_fog_features.npy>",
+    # "Synthetic AllMixed": r"<synthetic_allmixed_features.npy>",
 }
 
 REFERENCE_DATASET = "RealWorldDirty A"
@@ -47,7 +47,7 @@ REFERENCE_DATASET = "RealWorldDirty A"
 RAW_SYNTHETIC_DATASET = "Synthetic Raw"  # für spätere Prozentreduktion
 
 OUTPUT_FOLDER = Path(
-    r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\mmd_results"
+    "<path to output directory>"
 )
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 

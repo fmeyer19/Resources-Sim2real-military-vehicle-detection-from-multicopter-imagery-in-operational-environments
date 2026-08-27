@@ -21,10 +21,10 @@ from ultralytics import YOLO
 # EINSTELLUNGEN
 # =========================
 
-MODEL_PATH = r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\yolo26n.pt"
+MODEL_PATH = r"<path to yolo26n.pt>"
 
 OUTPUT_FOLDER = Path(
-    r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\features_all"
+    MODEL_PATH = r"<path to features_all output>"
 )
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
@@ -37,87 +37,9 @@ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 # Links: sauberer interner Name
 # Rechts: exakter Windows-Pfad zum Bildordner
 DATASETS = {
-    #"arma_allmixed_best_values": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_AllMixed_Best_Values",  # images: 0
-    "arma_compression_artefacts_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Compression_Artefacts_value_a=20",  # images: 500
-    "arma_compression_artefacts_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Compression_Artefacts_value_b=50",  # images: 500
-    "arma_compression_artefacts_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Compression_Artefacts_value_c=80",  # images: 500
-    "arma_contrast_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Contrast_value_0.2",  # images: 500
-    "arma_contrast_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Contrast_value_0.8",  # images: 500
-    "arma_contrast_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Contrast_value_1.4",  # images: 500
-    "arma_dark_smoke_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Dark_Smoke_value_a=1.0",  # images: 500
-    "arma_dark_smoke_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Dark_Smoke_value_b=1.5",  # images: 500
-    "arma_dark_smoke_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Dark_Smoke_value_c=2.0",  # images: 500
-    "arma_gaussian_blur_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Gaussian_Blur_value_a=0.5",  # images: 500
-    "arma_gaussian_blur_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Gaussian_Blur_value_b=1.5",  # images: 500
-    "arma_gaussian_blur_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Gaussian_Blur_value_c=2.5",  # images: 500
-    "arma_gaussian_noise_color_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Gaussian_Noise_Color_value_a=5",  # images: 500
-    "arma_gaussian_noise_color_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Gaussian_Noise_Color_value_b=15",  # images: 500
-    "arma_gaussian_noise_color_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Gaussian_Noise_Color_value_c=25",  # images: 500
-    "arma_gaussian_noise_grey_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Gaussian_Noise_Grey_value_a=5",  # images: 500
-    "arma_gaussian_noise_grey_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Gaussian_Noise_Grey_value_b=15",  # images: 500
-    "arma_gaussian_noise_grey_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Gaussian_Noise_Grey_value_c=25",  # images: 500
-    "arma_raw": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Raw_1",  # images: 500
-    "arma_saturation_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Saturation_value_a=0.2",  # images: 500
-    "arma_saturation_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Saturation_value_b=0.8",  # images: 500
-    "arma_saturation_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_Saturation_value_c=1.4",  # images: 500
-    "arma_white_fog_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_White_Fog_value_a=1",  # images: 500
-    "arma_white_fog_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_White_Fog_value_b=1.5",  # images: 500
-    "arma_white_fog_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Arma_White_Fog_value_c=2",  # images: 500
-    #"blender_allmixed_best_values": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_AllMixed_Best_Values",  # images: 0
-    "blender_compression_artefacts_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Compression_Artefacts_value_a=20",  # images: 500
-    "blender_compression_artefacts_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Compression_Artefacts_value_b=50",  # images: 500
-    "blender_compression_artefacts_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Compression_Artefacts_value_c=80",  # images: 500
-    "blender_contrast_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Contrast_value_a=0.2",  # images: 500
-    "blender_contrast_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Contrast_value_b=0.8",  # images: 500
-    "blender_contrast_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Contrast_value_c=1.4",  # images: 500
-    "blender_dark_smoke_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Dark_Smoke_value_a=1",  # images: 500
-    "blender_dark_smoke_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Dark_Smoke_value_b=1.5",  # images: 500
-    "blender_dark_smoke_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Dark_Smoke_value_c=2",  # images: 500
-    "blender_gaussian_blur_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Gaussian_Blur_value_a=0.5",  # images: 500
-    "blender_gaussian_blur_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Gaussian_Blur_value_b=1.5",  # images: 500
-    "blender_gaussian_blur_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Gaussian_Blur_value_c=2.5",  # images: 500
-    "blender_gaussian_noise_color_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Gaussian_Noise_Color_value_a=5",  # images: 500
-    "blender_gaussian_noise_color_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Gaussian_Noise_Color_value_b=15",  # images: 500
-    "blender_gaussian_noise_color_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Gaussian_Noise_Color_value_c=25",  # images: 500
-    "blender_gaussian_noise_grey_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Gaussian_Noise_Grey_value_a=5",  # images: 500
-    "blender_gaussian_noise_grey_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Gaussian_Noise_Grey_value_b=15",  # images: 500
-    "blender_gaussian_noise_grey_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Gaussian_Noise_Grey_value_c=25",  # images: 500
-    "blender_raw": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Raw",  # images: 500
-    "blender_saturation_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Saturation_value_a=0.2",  # images: 500
-    "blender_saturation_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Saturation_value_b=0.8",  # images: 500
-    "blender_saturation_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_Saturation_value_c=1.4",  # images: 500
-    "blender_white_fog_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_White_Fog_value_a=1",  # images: 500
-    "blender_white_fog_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_White_Fog_value_b=1.5",  # images: 500
-    "blender_white_fog_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Blender_White_Fog_value_c=2",  # images: 500
-    #"mixed_allmixed_best_values": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_AllMixed_Best_Values",  # images: 0
-    "mixed_compression_artefacts_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Compression_Artefacts_value_a=20",  # images: 500
-    "mixed_compression_artefacts_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Compression_Artefacts_value_b=50",  # images: 500
-    "mixed_compression_artefacts_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Compression_Artefacts_value_c=80",  # images: 500
-    "mixed_contrast_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Contrast_value_a=0.2",  # images: 500
-    "mixed_contrast_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Contrast_value_b=0.8",  # images: 500
-    "mixed_contrast_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Contrast_value_c=1.4",  # images: 500
-    "mixed_dark_smoke_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Dark_Smoke_value_a=1",  # images: 500
-    "mixed_dark_smoke_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Dark_Smoke_value_b=1.5",  # images: 500
-    "mixed_dark_smoke_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Dark_Smoke_value_c=2",  # images: 500
-    "mixed_gaussian_blur_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Gaussian_Blur_value_a=0.5",  # images: 500
-    "mixed_gaussian_blur_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Gaussian_Blur_value_b=1.5",  # images: 500
-    "mixed_gaussian_blur_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Gaussian_Blur_value_c=2.5",  # images: 500
-    "mixed_gaussian_noise_color_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Gaussian_Noise_Color_value_a=5",  # images: 500
-    "mixed_gaussian_noise_color_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Gaussian_Noise_Color_value_b=15",  # images: 500
-    "mixed_gaussian_noise_color_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Gaussian_Noise_Color_value_c=25",  # images: 500
-    "mixed_gaussian_noise_grey_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Gaussian_Noise_Grey_value_a=5",  # images: 500
-    "mixed_gaussian_noise_grey_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Gaussian_Noise_Grey_value_b=15",  # images: 500
-    "mixed_gaussian_noise_grey_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Gaussian_Noise_Grey_value_c=25",  # images: 500
-    "mixed_raw": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Raw",  # images: 500
-    "mixed_saturation_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Saturation_value_a=0.2",  # images: 500
-    "mixed_saturation_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Saturation_value_b=0.8",  # images: 500
-    "mixed_saturation_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_Saturation_value_c=1.4",  # images: 500
-    "mixed_white_fog_value_a": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_White_Fog_value_a=1",  # images: 500
-    "mixed_white_fog_value_b": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_White_Fog_value_b=1.5",  # images: 500
-    "mixed_white_fog_value_c": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\Mixed_White_Fog_value_c=2",  # images: 500
-    "realworld_A": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\RealWorld_500Images_1",  # images: 500
-    "realworld_B": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\RealWorld_500Images_2",  # images: 500
-    # ignorieren: "z_arma_raw_2": r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy\z_Arma_Raw_2",  # images: 500
+    r"<internal augmentatio name like arma_compression_artefacts_value_a>": r"<path to images of 500 of those augmented images>" # images: 500
+    
+    
 }
 
 

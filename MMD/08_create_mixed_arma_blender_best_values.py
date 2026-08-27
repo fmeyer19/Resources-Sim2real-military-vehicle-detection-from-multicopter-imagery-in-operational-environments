@@ -7,7 +7,7 @@ import shutil
 # EINSTELLUNGEN
 # =========================
 
-BASE_DIR = Path(r"C:\Users\admin\Desktop\Doktorarbeit\Maximum_Mean_Discrepancy")
+BASE_DIR = Path(r"<path to base directory>")
 
 ARMA_BEST_FOLDER = BASE_DIR / "Arma_AllMixed_Best_Values"
 BLENDER_BEST_FOLDER = BASE_DIR / "Blender_AllMixed_Best_Values"
