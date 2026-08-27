@@ -28,7 +28,7 @@ OUTPUT_FOLDER = Path(
 )
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
-IMAGE_SIZE = 640
+IMAGE_SIZE = 960
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 
