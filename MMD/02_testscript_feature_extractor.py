@@ -14,7 +14,7 @@ from ultralytics import YOLO
 MODEL_PATH = r"<path to yolo26n.pt>"
 
 # If the model is located elsewhere, use for example:
-# MODEL_PATH = r"C:\Users\admin\Desktop\MMD_Analyse\yolo26n.pt"
+# MODEL_PATH = r"<path to yolo26n.pt>"
 
 REAL_A_FOLDER = Path(r"<path to REAL_A Dataset for Baseline>")
 
