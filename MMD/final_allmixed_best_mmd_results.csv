@@ -1,0 +1,4 @@
+Gruppe;Raw_Datensatz;Raw_MMD2;AllMixed_Best_Datensatz;AllMixed_Best_MMD2;Delta_MMD2;Reduktion_Prozent
+Arma;arma_raw;0.1486354670468144;arma_allmixed_best_values;0.06408655927474527;0.08454890777206914;56.88340034309544
+Blender;blender_raw;0.0904881642304638;blender_allmixed_best_values;0.08225006914742328;0.00823809508304052;9.104058141857053
+Mixed;mixed_raw;0.07573342837373631;mixed_allmixed_best_values;0.053114676806167216;0.022618751567569095;29.86627180793664
