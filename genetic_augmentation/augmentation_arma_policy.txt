@@ -1,0 +1,15 @@
+Found Strategy:
+
+Nested size: 1
+Mode: Pick-2
+0.      defocus( p: 0.75, s: 1.52)
+1.      gaussian_blur( p: 0.95, s: 0.11)
+2.      dropout( p: 0.05, s: 0.98)
+3.      defocus( p: 0.52, s: 0.80)
+4.      invert( p: 0.76, s: 1.61)
+5.      multiplicative_noise( p: 0.24, s: 0.14)
+6.      posterize( p: 0.32, s: 1.51)
+7.      multiplicative_noise( p: 0.31, s: 0.10)
+8.      uniform_noise( p: 0.70, s: 0.02)
+9.      hue( p: 0.16, s: 1.14)
+10.     brightness( p: 0.32, s: 1.08)
