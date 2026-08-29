@@ -1,11 +1,10 @@
 """
 07_extract_features_allmixed_best.py
 
-Erzeugt für jeden angegebenen Bildordner eine .npy-Feature-Datei.
-Alle Bilder werden mit demselben YOLOv26n-Modell verarbeitet.
-Die Feature Maps unmittelbar vor dem Detection Head werden abgegriffen
-und mittels Global Average Pooling zu einem Feature-Vektor pro Bild
-zusammengefasst.
+Creates one .npy feature file for each of the image folders listed below.
+All images are processed with the same YOLOv26n model.
+The feature maps immediately preceding the detection head are captured
+and reduced to one feature vector per image by global average pooling.
 """
 
 from pathlib import Path
@@ -18,7 +17,7 @@ from ultralytics import YOLO
 
 
 # =========================
-# EINSTELLUNGEN
+# SETTINGS
 # =========================
 
 MODEL_PATH = r"<path to yolo26n.pt>"
@@ -33,9 +32,9 @@ IMAGE_SIZE = 960
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 
 
-# Trage hier alle vorhandenen Datensatzordner ein.
-# Links: sauberer interner Name
-# Rechts: exakter Windows-Pfad zum Bildordner
+# List every dataset folder to be processed here.
+# Left: clean internal name
+# Right: exact Windows path to the image folder
 DATASETS = {
     "mixed_arma_blender_best_values": r"<path to Mixed_Arma_Blender_Best_Values>",
 }
@@ -50,7 +49,7 @@ print("Device:", device)
 
 
 # =========================
-# MODELL LADEN
+# LOAD MODEL
 # =========================
 
 model = YOLO(MODEL_PATH)
@@ -79,7 +78,7 @@ print("Feature hook registered successfully.")
 
 
 # =========================
-# FUNKTIONEN
+# FUNCTIONS
 # =========================
 
 def get_image_paths(folder):

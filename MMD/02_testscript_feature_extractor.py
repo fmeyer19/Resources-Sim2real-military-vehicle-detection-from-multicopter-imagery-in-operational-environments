@@ -7,13 +7,13 @@ from ultralytics import YOLO
 
 
 # =========================
-# EINSTELLUNGEN
+# SETTINGS
 # =========================
 
-# Wenn yolo26n.pt im gleichen Ordner wie dieses Skript liegt:
+# If yolo26n.pt is located in the same folder as this script:
 MODEL_PATH = r"<path to yolo26n.pt>"
 
-# Falls das Modell woanders liegt, stattdessen z. B.:
+# If the model is located elsewhere, use for example:
 # MODEL_PATH = r"C:\Users\admin\Desktop\MMD_Analyse\yolo26n.pt"
 
 REAL_A_FOLDER = Path(r"<path to REAL_A Dataset for Baseline>")
@@ -32,7 +32,7 @@ print("Device:", device)
 
 
 # =========================
-# MODELL LADEN
+# LOAD MODEL
 # =========================
 
 model = YOLO(MODEL_PATH)
@@ -54,8 +54,8 @@ def hook_detect_input(module, inputs):
     captured_features = inputs[0]
 
 
-# Der letzte Layer ist normalerweise der Detection Head.
-# Wir greifen die Eingabe dieses Detection Heads ab.
+# The last layer is normally the detection head.
+# The input of that detection head is captured here.
 detect_layer = model.model.model[-1]
 detect_layer.register_forward_pre_hook(hook_detect_input)
 
@@ -63,7 +63,7 @@ print("Feature hook registered successfully.")
 
 
 # =========================
-# TESTBILD LADEN
+# LOAD TEST IMAGE
 # =========================
 
 image_paths = [
@@ -89,7 +89,7 @@ if img is None:
 
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-# Wichtig: alle Bilder werden auf dieselbe Eingabegröße gebracht
+# Important: all images are brought to the same input size
 img = cv2.resize(img, (IMAGE_SIZE, IMAGE_SIZE))
 
 img = img.astype(np.float32) / 255.0
@@ -106,7 +106,7 @@ with torch.no_grad():
 
 
 # =========================
-# FEATURE VECTOR ERZEUGEN
+# CREATE FEATURE VECTOR
 # =========================
 
 if captured_features is None:
@@ -122,18 +122,18 @@ if isinstance(captured_features, (list, tuple)):
     for i, feature_map in enumerate(captured_features):
         print(f"Feature map {i} shape:", feature_map.shape)
 
-        # Global Average Pooling:
+        # Global average pooling:
         # [Batch, Channels, Height, Width] -> [Batch, Channels]
         pooled = feature_map.mean(dim=(2, 3))
         pooled_features.append(pooled)
 
-    # Mehrere Feature Maps werden zu einem Vektor zusammengefügt
+    # Several feature maps are concatenated into one vector
     feature_vector = torch.cat(pooled_features, dim=1)
 
 else:
     print("Single feature map shape:", captured_features.shape)
 
-    # Falls nur eine Feature Map vorliegt
+    # If only a single feature map is present
     feature_vector = captured_features.mean(dim=(2, 3))
 
 

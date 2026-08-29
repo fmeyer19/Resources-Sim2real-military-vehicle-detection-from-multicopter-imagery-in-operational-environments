@@ -4,7 +4,7 @@ import shutil
 
 
 # =========================
-# EINSTELLUNGEN
+# SETTINGS
 # =========================
 
 BASE_DIR = Path(r"<path to base directory>")
@@ -27,7 +27,7 @@ IMAGE_EXTENSIONS = {
 
 
 # =========================
-# FUNKTIONEN
+# FUNCTIONS
 # =========================
 
 def get_images(folder: Path):
@@ -41,8 +41,8 @@ def get_images(folder: Path):
 def copy_sampled_images(source_images, n_images, prefix, output_folder):
     if len(source_images) < n_images:
         raise ValueError(
-            f"Nicht genug Bilder vorhanden: {len(source_images)} gefunden, "
-            f"{n_images} benötigt."
+            f"Not enough images available: {len(source_images)} found, "
+            f"{n_images} required."
         )
 
     sampled = random.sample(source_images, n_images)
@@ -69,8 +69,8 @@ OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 arma_images = get_images(ARMA_BEST_FOLDER)
 blender_images = get_images(BLENDER_BEST_FOLDER)
 
-print(f"Arma-Best-Value-Bilder gefunden: {len(arma_images)}")
-print(f"Blender-Best-Value-Bilder gefunden: {len(blender_images)}")
+print(f"Arma best-value images found: {len(arma_images)}")
+print(f"Blender best-value images found: {len(blender_images)}")
 
 copy_sampled_images(
     source_images=arma_images,
@@ -88,7 +88,7 @@ copy_sampled_images(
 
 final_images = get_images(OUTPUT_FOLDER)
 
-print(f"\nNeuer Datensatz erstellt: {OUTPUT_FOLDER}")
-print(f"Gesamtzahl Bilder: {len(final_images)}")
-print(f"Arma-Anteil: {N_ARMA}")
-print(f"Blender-Anteil: {N_BLENDER}")
+print(f"\nNew dataset created: {OUTPUT_FOLDER}")
+print(f"Total number of images: {len(final_images)}")
+print(f"Arma share: {N_ARMA}")
+print(f"Blender share: {N_BLENDER}")

@@ -1,11 +1,10 @@
 """
 02_extract_features_all_datasets.py
 
-Erzeugt für jeden angegebenen Bildordner eine .npy-Feature-Datei.
-Alle Bilder werden mit demselben YOLOv26n-Modell verarbeitet.
-Die Feature Maps unmittelbar vor dem Detection Head werden abgegriffen
-und mittels Global Average Pooling zu einem Feature-Vektor pro Bild
-zusammengefasst.
+Creates one .npy feature file for each of the image folders listed below.
+All images are processed with the same YOLOv26n model.
+The feature maps immediately preceding the detection head are captured
+and reduced to one feature vector per image by global average pooling.
 """
 
 from pathlib import Path
@@ -18,7 +17,7 @@ from ultralytics import YOLO
 
 
 # =========================
-# EINSTELLUNGEN
+# SETTINGS
 # =========================
 
 MODEL_PATH = r"<path to yolo26n.pt>"
@@ -32,12 +31,12 @@ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 
 
 DATASETS = {
-    # <path> steht fuer das Verzeichnis, in dem die unten genannten Bildordner liegen.
+    # <path> stands for the directory holding the image folders named below.
     #
-    # Zur Benennung: "white_fog" ist der Arbeitsname der Methode, die in der
-    # Arbeit als "light smoke" bezeichnet wird. Interne Namen und Ordnernamen
-    # sind unveraendert geblieben, weil sie in die Dateinamen der erzeugten
-    # .npy-Dateien eingehen und von Skript 03 wieder eingelesen werden.
+    # On naming: "white_fog" is the working name of the method referred to as
+    # "light smoke" in the thesis. Internal names and folder names were left
+    # unchanged, because they become part of the file names of the generated
+    # .npy files and are read back in by script 03.
     "arma_compression_artefacts_value_a": r"<path>\Arma_Compression_Artefacts_value_a=20",  # images: 500
     "arma_compression_artefacts_value_b": r"<path>\Arma_Compression_Artefacts_value_b=50",  # images: 500
     "arma_compression_artefacts_value_c": r"<path>\Arma_Compression_Artefacts_value_c=80",  # images: 500
@@ -127,7 +126,7 @@ print("Device:", device)
 
 
 # =========================
-# MODELL LADEN
+# LOAD MODEL
 # =========================
 
 model = YOLO(MODEL_PATH)
@@ -156,7 +155,7 @@ print("Feature hook registered successfully.")
 
 
 # =========================
-# FUNKTIONEN
+# FUNCTIONS
 # =========================
 
 def get_image_paths(folder):

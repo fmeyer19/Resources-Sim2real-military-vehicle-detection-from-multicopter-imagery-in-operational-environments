@@ -6,7 +6,7 @@ from sklearn.metrics import pairwise_distances
 
 
 # =========================
-# EINSTELLUNGEN
+# SETTINGS
 # =========================
 
 BASE_DIR = Path(r"<path to base directory>")
@@ -25,7 +25,7 @@ GAMMA_SAMPLE_SIZE = 3000
 
 
 # =========================
-# FUNKTIONEN
+# FUNCTIONS
 # =========================
 
 def load_feature_files(feature_folder):
@@ -42,8 +42,8 @@ def load_feature_files(feature_folder):
 
 def normalize_features_jointly(features_dict):
     """
-    Alle Feature-Vektoren werden gemeinsam standardisiert.
-    Dadurch liegen alle Datensätze im gleichen normalisierten Feature-Space.
+    All feature vectors are standardized jointly.
+    All datasets therefore lie in the same normalized feature space.
     """
     all_features = np.vstack(list(features_dict.values()))
 
@@ -60,8 +60,8 @@ def normalize_features_jointly(features_dict):
 
 def estimate_global_gamma(features_dict, sample_size=3000, seed=42):
     """
-    Schätzt einen gemeinsamen RBF-gamma-Wert per Median-Heuristik.
-    Der Wert wird global bestimmt und anschließend für alle MMD²-Vergleiche verwendet.
+    Estimates a shared RBF gamma value by the median heuristic.
+    The value is determined globally and then used for all MMD^2 comparisons.
     """
     rng = np.random.default_rng(seed)
 
@@ -74,7 +74,7 @@ def estimate_global_gamma(features_dict, sample_size=3000, seed=42):
 
     distances_sq = pairwise_distances(sample, sample, metric="sqeuclidean")
 
-    # Diagonale entfernen, weil dort die Distanz immer 0 ist
+    # Remove the diagonal, where the distance is always 0
     distances_sq = distances_sq[np.triu_indices_from(distances_sq, k=1)]
 
     median_dist_sq = np.median(distances_sq)
@@ -94,7 +94,7 @@ def rbf_kernel_matrix(X, Y, gamma):
 
 def compute_mmd2(X, Y, gamma):
     """
-    Biased MMD²-Schätzung:
+    Biased MMD^2 estimate:
     mean(Kxx) + mean(Kyy) - 2 * mean(Kxy)
     """
     K_xx = rbf_kernel_matrix(X, X, gamma)
@@ -136,25 +136,25 @@ def infer_variant(dataset_name):
 # MAIN
 # =========================
 
-print("\nLade Feature-Dateien...")
+print("\nLoading feature files...")
 features = load_feature_files(FEATURE_FOLDER)
 
-print(f"Gefundene Feature-Dateien: {len(features)}")
+print(f"Feature files found: {len(features)}")
 
 if REFERENCE_DATASET not in features:
     raise KeyError(
-        f"Referenzdatensatz '{REFERENCE_DATASET}' wurde nicht gefunden. "
-        f"Verfügbare Datensätze: {list(features.keys())}"
+        f"Reference dataset '{REFERENCE_DATASET}' was not found. "
+        f"Available datasets: {list(features.keys())}"
     )
 
 print("\nFeature Shapes:")
 for name, feat in features.items():
     print(f"{name:45s} {feat.shape}")
 
-print("\nNormalisiere alle Features gemeinsam...")
+print("\nStandardizing all features jointly...")
 features_norm = normalize_features_jointly(features)
 
-print("\nSchätze globalen RBF-gamma-Wert...")
+print("\nEstimating global RBF gamma value...")
 gamma, median_dist_sq = estimate_global_gamma(
     features_norm,
     sample_size=GAMMA_SAMPLE_SIZE,
@@ -168,7 +168,7 @@ reference_features = features_norm[REFERENCE_DATASET]
 
 results = []
 
-print("\nBerechne MMD²-Vergleiche...\n")
+print("\nComputing MMD^2 comparisons...\n")
 
 for dataset_name, dataset_features in features_norm.items():
     if dataset_name == REFERENCE_DATASET:
@@ -196,7 +196,7 @@ for dataset_name, dataset_features in features_norm.items():
 
 
 # =========================
-# CSV SPEICHERN
+# SAVE CSV
 # =========================
 
 fieldnames = [
@@ -224,7 +224,7 @@ with open(OUTPUT_SORTED_CSV, "w", newline="", encoding="utf-8") as f:
     writer.writeheader()
     writer.writerows(results_sorted)
 
-print("\nGespeichert:")
+print("\nSaved:")
 print(OUTPUT_CSV)
 print(OUTPUT_SORTED_CSV)
 

@@ -5,7 +5,7 @@ import csv
 
 
 # =========================
-# EINSTELLUNGEN
+# SETTINGS
 # =========================
 
 BASE_DIR = Path(r"<path to base directory>")
@@ -15,14 +15,14 @@ TARGET_IMAGE_COUNT = 500
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tif", ".tiff"}
 
-# Sicherheitsoption:
-# False = Skript bricht ab, wenn Zielordner bereits Bilder enthält
-# True  = Zielordner wird vorher geleert
+# Safety option:
+# False = the script aborts if the target folder already contains images
+# True  = the target folder is emptied beforehand
 CLEAR_OUTPUT_FOLDERS = False
 
 
 # =========================
-# BEST-VALUE-QUELLORDNER
+# BEST-VALUE SOURCE FOLDERS
 # =========================
 
 ALLMIXED_CONFIGS = {
@@ -57,7 +57,7 @@ ALLMIXED_CONFIGS = {
 
 
 # =========================
-# FUNKTIONEN
+# FUNCTIONS
 # =========================
 
 def get_images(folder: Path):
@@ -74,8 +74,8 @@ def prepare_output_folder(output_folder: Path):
 
     if existing_images and not CLEAR_OUTPUT_FOLDERS:
         raise RuntimeError(
-            f"Zielordner enthält bereits Bilder: {output_folder}\n"
-            f"Entweder Ordner leeren oder CLEAR_OUTPUT_FOLDERS = True setzen."
+            f"Target folder already contains images: {output_folder}\n"
+            f"Either empty the folder or set CLEAR_OUTPUT_FOLDERS = True."
         )
 
     if CLEAR_OUTPUT_FOLDERS:
@@ -86,9 +86,9 @@ def prepare_output_folder(output_folder: Path):
 
 def distribute_counts(total_count: int, number_of_sources: int):
     """
-    Verteilt 500 Bilder möglichst gleichmäßig auf die ausgewählten Methoden.
-    Beispiel bei 8 Methoden: 63, 63, 63, 63, 62, 62, 62, 62
-    Beispiel bei 3 Methoden: 167, 167, 166
+    Distributes 500 images as evenly as possible across the selected methods.
+    Example with 8 methods: 63, 63, 63, 63, 62, 62, 62, 62
+    Example with 3 methods: 167, 167, 166
     """
     base = total_count // number_of_sources
     remainder = total_count % number_of_sources
@@ -114,24 +114,24 @@ def create_allmixed_dataset(output_name: str, source_folders: dict, rng: random.
     copied_total = 0
 
     print("\n========================================")
-    print(f"Erzeuge: {output_name}")
+    print(f"Creating: {output_name}")
     print("========================================")
 
     for (method_name, source_folder), count in zip(source_items, counts):
         if not source_folder.exists():
-            raise FileNotFoundError(f"Quellordner nicht gefunden: {source_folder}")
+            raise FileNotFoundError(f"Source folder not found: {source_folder}")
 
         images = get_images(source_folder)
 
         if len(images) < count:
             raise RuntimeError(
-                f"Nicht genug Bilder in {source_folder}. "
-                f"Benötigt: {count}, gefunden: {len(images)}"
+                f"Not enough images in {source_folder}. "
+                f"Required: {count}, found: {len(images)}"
             )
 
         selected_images = rng.sample(images, count)
 
-        print(f"{method_name:40s} -> {count:3d} Bilder")
+        print(f"{method_name:40s} -> {count:3d} images")
 
         for image_path in selected_images:
             copied_total += 1
@@ -167,13 +167,13 @@ def create_allmixed_dataset(output_name: str, source_folders: dict, rng: random.
 
     final_count = len(get_images(output_folder))
 
-    print(f"\nFertig: {output_name}")
-    print(f"Bilder im Zielordner: {final_count}")
-    print(f"Log gespeichert: {log_path}")
+    print(f"\nFinished: {output_name}")
+    print(f"Images in target folder: {final_count}")
+    print(f"Log saved: {log_path}")
 
     if final_count != TARGET_IMAGE_COUNT:
         raise RuntimeError(
-            f"Fehler: {output_name} enthält {final_count} Bilder statt {TARGET_IMAGE_COUNT}."
+            f"Error: {output_name} contains {final_count} images instead of {TARGET_IMAGE_COUNT}."
         )
 
 
@@ -186,4 +186,4 @@ rng = random.Random(RANDOM_SEED)
 for output_name, source_folders in ALLMIXED_CONFIGS.items():
     create_allmixed_dataset(output_name, source_folders, rng)
 
-print("\nAlle AllMixed_Best_Values-Datensätze wurden erstellt.")
+print("\nAll AllMixed_Best_Values datasets have been created.")

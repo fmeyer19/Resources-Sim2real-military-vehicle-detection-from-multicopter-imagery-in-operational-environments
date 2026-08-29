@@ -3,7 +3,7 @@ import pandas as pd
 
 
 # =========================
-# EINSTELLUNGEN
+# SETTINGS
 # =========================
 
 BASE_DIR = Path(r"<path to base directory>")
@@ -16,13 +16,13 @@ OUTPUT_TOP_CSV = BASE_DIR / "mmd_results" / "mmd_top_overall.csv"
 
 
 # =========================
-# HILFSFUNKTIONEN
+# HELPER FUNCTIONS
 # =========================
 
 def infer_method_name(dataset_name: str, group: str) -> str:
     """
-    Entfernt Gruppenpräfix und value-Suffix.
-    Beispiel:
+    Removes the group prefix and the value suffix.
+    Example:
     arma_gaussian_blur_value_a -> gaussian_blur
     mixed_white_fog_value_c    -> white_fog
     """
@@ -50,20 +50,20 @@ def interpret_reduction(reduction_percent: float) -> str:
 
 
 # =========================
-# CSV LADEN
+# LOAD CSV
 # =========================
 
 df = pd.read_csv(INPUT_CSV, sep=";")
 
-# Nur Arma, Blender und Mixed betrachten.
-# RealWorld_B ist nur Baseline und wird hier nicht als Augmentation analysiert.
+# Consider only Arma, Blender and Mixed.
+# RealWorld_B is a baseline only and is not analyzed as an augmentation here.
 df = df[df["group"].isin(["arma", "blender", "mixed"])].copy()
 
 df["mmd2"] = df["mmd2"].astype(float)
 
 
 # =========================
-# RAW-WERTE EXTRAHIEREN
+# EXTRACT RAW VALUES
 # =========================
 
 raw_values = {}
@@ -72,18 +72,18 @@ for group in ["arma", "blender", "mixed"]:
     raw_row = df[(df["group"] == group) & (df["variant"] == "raw")]
 
     if raw_row.empty:
-        raise ValueError(f"Kein Raw-Wert für Gruppe gefunden: {group}")
+        raise ValueError(f"No raw value found for group: {group}")
 
     raw_values[group] = float(raw_row.iloc[0]["mmd2"])
 
 
-print("\nRaw-MMD²-Werte:")
+print("\nRaw MMD^2 values:")
 for group, value in raw_values.items():
     print(f"{group:8s}: {value:.8f}")
 
 
 # =========================
-# REDUKTIONEN BERECHNEN
+# COMPUTE REDUCTIONS
 # =========================
 
 rows = []
@@ -94,7 +94,7 @@ for _, row in df.iterrows():
     variant = row["variant"]
     mmd2 = float(row["mmd2"])
 
-    # Raw-Zeilen selbst überspringen
+    # Skip the raw rows themselves
     if variant == "raw":
         continue
 
@@ -119,7 +119,7 @@ for _, row in df.iterrows():
 
 reduction_df = pd.DataFrame(rows)
 
-# Sortierung: Gruppe, Methode, Variante
+# Sort order: group, method, variant
 reduction_df = reduction_df.sort_values(
     by=["group", "method", "variant"]
 )
@@ -133,7 +133,7 @@ reduction_df.to_csv(
 
 
 # =========================
-# BESTER VALUE PRO METHODE
+# BEST VALUE PER METHOD
 # =========================
 
 best_df = (
@@ -174,24 +174,24 @@ top_df.to_csv(
 
 
 # =========================
-# AUSGABE
+# OUTPUT
 # =========================
 
-print("\nBeste Augmentation pro Methode:")
+print("\nBest augmentation per method:")
 print(
     best_df[
         ["group", "method", "variant", "mmd2", "raw_mmd2", "reduction_percent", "interpretation"]
     ].to_string(index=False)
 )
 
-print("\nTop 15 insgesamt:")
+print("\nTop 15 overall:")
 print(
     top_df[
         ["group", "method", "variant", "mmd2", "reduction_percent", "interpretation"]
     ].head(15).to_string(index=False)
 )
 
-print("\nGespeichert:")
+print("\nSaved:")
 print(OUTPUT_DETAILED_CSV)
 print(OUTPUT_BEST_CSV)
 print(OUTPUT_TOP_CSV)
