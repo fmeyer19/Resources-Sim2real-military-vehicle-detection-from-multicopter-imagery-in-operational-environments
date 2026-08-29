@@ -1,5 +1,5 @@
 """
-08_extract_features_allmixed_best.py
+07_extract_features_allmixed_best.py
 
 Erzeugt für jeden angegebenen Bildordner eine .npy-Feature-Datei.
 Alle Bilder werden mit demselben YOLOv26n-Modell verarbeitet.
