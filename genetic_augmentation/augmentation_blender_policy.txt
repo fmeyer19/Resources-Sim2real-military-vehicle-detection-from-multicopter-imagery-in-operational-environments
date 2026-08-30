@@ -1,0 +1,16 @@
+Nested size: 1
+Mode: Pick-2
+0.      emboss( p: 0.23, s: 0.34)
+1.      emboss( p: 0.15, s: 1.29)
+2.      posterize( p: 0.58, s: 1.70)
+3.      multiplicative_noise( p: 0.58, s: 0.22)
+4.      gauss_noise( p: 0.33, s: 0.80)
+5.      invert( p: 0.79, s: 0.96)
+6.      blur( p: 0.22, s: 0.57)
+7.      glass_blur( p: 0.74, s: 1.22)
+8.      channel_shuffle( p: 0.14, s: 0.22)
+9.      posterize( p: 0.88, s: 1.65)
+10.     brightness( p: 0.20, s: 1.25)
+11.     multiplicative_noise( p: 0.96, s: 0.54)
+12.     gamma( p: 0.11, s: 1.43)
+13.     defocus( p: 0.82, s: 1.18)
