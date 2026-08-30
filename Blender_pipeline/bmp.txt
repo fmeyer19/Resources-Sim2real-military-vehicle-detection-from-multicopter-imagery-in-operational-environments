@@ -1,0 +1,121 @@
+ OBJECT_POOL =[
+    "hull_bmp1-hull_0_0",
+    "turret_bmp1-turret_1_0",
+    "josef",
+    "goebels",
+    "hull_bmp1-hull_0_0.001",
+    "turret_bmp1-turret_1_0.001",
+    "hull_bmp1-hull_0_0.002",
+    "weapon_bmp1-gun_4_0.002",
+    "hull_bmp1-hull_0_0.003",
+    "turret_bmp1-turret_1_0.003",
+    "hull_bmp1-hull_0_0.004",
+    "turret_bmp1-turret_1_0.004",
+    "josef1",
+    "goebels1",
+    "josef2",
+    "goebels2",
+    "josef3",
+    "goebels3",
+    "josef4",
+    "goebels4",
+    "hull.002_bmp2-hull_0_0",
+    "turret.002_bmp2-turret_11_0",
+    "Turret_LOD0_0_Material #3_0",
+    "vechicle_BMP2_LOD0_1_Material #4_0",
+    "Base_BMP-2M_Down_0",
+    "Turret_BMP-2M_Up_0",
+    "Base_BMP-2M_Down_0.001",
+    "Turret_BMP-2M_Up_0.001",
+    "Base_BMP-2M_Down_0.002",
+    "Turret_BMP-2M_Up_0.002",
+    "Base_BMP-2M_Down_0.003",
+    "Turret_BMP-2M_Up_0.003",
+    "Base_BMP-2M_Down_0.004",
+    "Turret_BMP-2M_Up_0.004",
+    "bmp-2m_hull",
+    "bmp-2m_turret",
+    "bmp-2m_hull.003",
+    "bmp-2m_mount3.003",
+    "bmp-2m_hull.002",
+    "bmp-2m_turret.002",
+    "bmp-2m_hull.001",
+    "bmp-2m_turret.001",
+    "bmp-2m_hull.004",
+    "bmp-2m_turret.004",
+]
+
+
+
+
+TURRETS = {
+    "hull_bmp1-hull_0_0": "turret_bmp1-turret_1_0",  # body vol=0.011 z=0.00 | turret vol=0.002 z=0.00
+    "josef": "goebels",  # body vol=0.016 z=0.07 | turret vol=0.001 z=0.11
+    "hull_bmp1-hull_0_0.001": "turret_bmp1-turret_1_0.001",  # body vol=0.010 z=-0.01 | turret vol=0.002 z=-0.01
+    "hull_bmp1-hull_0_0.002": "weapon_bmp1-gun_4_0.002",  # body vol=0.010 z=-0.01 | turret vol=0.002 z=-0.01
+    "hull_bmp1-hull_0_0.003": "turret_bmp1-turret_1_0.003",  # body vol=0.010 z=-0.01 | turret vol=0.002 z=-0.01
+    "hull_bmp1-hull_0_0.004": "turret_bmp1-turret_1_0.004",  # body vol=0.010 z=-0.01 | turret vol=0.002 z=-0.01
+    "josef1": "goebels1",  # body vol=0.016 z=0.07 | turret vol=0.001 z=0.11
+    "josef2": "goebels2",  # body vol=0.016 z=0.07 | turret vol=0.001 z=0.11
+    "josef3": "goebels3",  # body vol=0.016 z=0.07 | turret vol=0.001 z=0.11
+    "josef4": "goebels4",  # body vol=0.016 z=0.07 | turret vol=0.001 z=0.11
+    "hull.002_bmp2-hull_0_0": "turret.002_bmp2-turret_11_0",  # body vol=0.012 z=-0.00 | turret vol=0.006 z=-0.00
+    "vechicle_BMP2_LOD0_1_Material #4_0": "Turret_LOD0_0_Material #3_0",  # body vol=0.010 z=0.00 | turret vol=0.003 z=0.14
+    "Base_BMP-2M_Down_0": "Turret_BMP-2M_Up_0",  # body vol=0.012 z=0.09 | turret vol=0.003 z=0.13
+    "Base_BMP-2M_Down_0.001": "Turret_BMP-2M_Up_0.001",  # body vol=0.012 z=0.09 | turret vol=0.003 z=0.13
+    "Base_BMP-2M_Down_0.002": "Turret_BMP-2M_Up_0.002",  # body vol=0.012 z=0.09 | turret vol=0.003 z=0.13
+    "Base_BMP-2M_Down_0.003": "Turret_BMP-2M_Up_0.003",  # body vol=0.012 z=0.09 | turret vol=0.003 z=0.13
+    "Base_BMP-2M_Down_0.004": "Turret_BMP-2M_Up_0.004",  # body vol=0.012 z=0.09 | turret vol=0.003 z=0.13
+    "bmp-2m_hull": "bmp-2m_turret",  # body vol=0.011 z=-0.00 | turret vol=0.007 z=0.03
+    "bmp-2m_hull.003": "bmp-2m_mount3.003",  # body vol=0.008 z=-0.01 | turret vol=0.005 z=0.02
+    "bmp-2m_hull.002": "bmp-2m_turret.002",  # body vol=0.008 z=-0.01 | turret vol=0.005 z=0.02
+    "bmp-2m_hull.001": "bmp-2m_turret.001",  # body vol=0.008 z=-0.01 | turret vol=0.005 z=0.02
+    "bmp-2m_hull.004": "bmp-2m_turret.004",  # body vol=0.008 z=-0.01 | turret vol=0.005 z=0.02
+}
+
+ CLASS_MAP = {
+    "hull_bmp1-hull_0_0": 0,
+    "turret_bmp1-turret_1_0": 0,
+    "josef": 0,
+    "goebels": 0,
+    "hull_bmp1-hull_0_0.001": 0,
+    "turret_bmp1-turret_1_0.001": 0,
+    "hull_bmp1-hull_0_0.002": 0,
+    "weapon_bmp1-gun_4_0.002": 0,
+    "hull_bmp1-hull_0_0.003": 0,
+    "turret_bmp1-turret_1_0.003": 0,
+    "hull_bmp1-hull_0_0.004": 0,
+    "turret_bmp1-turret_1_0.004": 0,
+    "josef1": 0,
+    "goebels1": 0,
+    "josef2": 0,
+    "goebels2": 0,
+    "josef3": 0,
+    "goebels3": 0,
+    "josef4": 0,
+    "goebels4": 0,
+    "hull.002_bmp2-hull_0_0": 0,
+    "turret.002_bmp2-turret_11_0": 0,
+    "Turret_LOD0_0_Material #3_0": 0,
+    "vechicle_BMP2_LOD0_1_Material #4_0": 0,
+    "Base_BMP-2M_Down_0": 0,
+    "Turret_BMP-2M_Up_0": 0,
+    "Base_BMP-2M_Down_0.001": 0,
+    "Turret_BMP-2M_Up_0.001": 0,
+    "Base_BMP-2M_Down_0.002": 0,
+    "Turret_BMP-2M_Up_0.002": 0,
+    "Base_BMP-2M_Down_0.003": 0,
+    "Turret_BMP-2M_Up_0.003": 0,
+    "Base_BMP-2M_Down_0.004": 0,
+    "Turret_BMP-2M_Up_0.004": 0,
+    "bmp-2m_hull": 0,
+    "bmp-2m_turret": 0,
+    "bmp-2m_hull.003": 0,
+    "bmp-2m_mount3.003": 0,
+    "bmp-2m_hull.002": 0,
+    "bmp-2m_turret.002": 0,
+    "bmp-2m_hull.001": 0,
+    "bmp-2m_turret.001": 0,
+    "bmp-2m_hull.004": 0,
+    "bmp-2m_turret.004": 0,
+}

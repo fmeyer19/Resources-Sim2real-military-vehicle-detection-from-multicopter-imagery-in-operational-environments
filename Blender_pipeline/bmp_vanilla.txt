@@ -1,0 +1,44 @@
+OBJECT_POOL =[
+    	"hull_bmp1-hull_0_0",
+    	"turret_bmp1-turret_1_0",
+    	"josef",
+    	"goebels",
+    	"hull.002_bmp2-hull_0_0",
+    	"turret.002_bmp2-turret_11_0",
+    	"Turret_LOD0_0_Material #3_0",
+    	"vechicle_BMP2_LOD0_1_Material #4_0",
+    	"Base_BMP-2M_Down_0",
+    	"Turret_BMP-2M_Up_0",
+    	"bmp-2m_hull",
+    	"bmp-2m_turret",
+]
+
+
+
+
+TURRETS = {
+    	"hull_bmp1-hull_0_0": "turret_bmp1-turret_1_0",  # body vol=0.011 z=0.00 | turret vol=0.002 z=0.00
+    	"josef": "goebels",  # body vol=0.016 z=0.07 | turret vol=0.001 z=0.11
+    	"hull.002_bmp2-hull_0_0": "turret.002_bmp2-turret_11_0",  # body vol=0.012 z=-0.00 | turret vol=0.006 z=-0.00
+    	"vechicle_BMP2_LOD0_1_Material #4_0": "Turret_LOD0_0_Material #3_0",  # body vol=0.010 z=0.00 | turret vol=0.003 z=0.14
+    	"Base_BMP-2M_Down_0": "Turret_BMP-2M_Up_0",  # body vol=0.012 z=0.09 | turret vol=0.003 z=0.13
+    	"bmp-2m_hull": "bmp-2m_turret",  # body vol=0.011 z=-0.00 | turret vol=0.007 z=0.03
+}
+
+
+
+
+CLASS_MAP = {
+    	"hull_bmp1-hull_0_0": 0,
+    	"turret_bmp1-turret_1_0": 0,
+    	"josef": 0,
+    	"goebels": 0,
+    	"hull.002_bmp2-hull_0_0": 0,
+    	"turret.002_bmp2-turret_11_0": 0,
+    	"Turret_LOD0_0_Material #3_0": 0,
+    	"vechicle_BMP2_LOD0_1_Material #4_0": 0,
+    	"Base_BMP-2M_Down_0": 0,
+    	"Turret_BMP-2M_Up_0": 0,
+    	"bmp-2m_hull": 0,
+    	"bmp-2m_turret": 0,
+}

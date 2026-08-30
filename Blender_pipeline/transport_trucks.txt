@@ -1,0 +1,19 @@
+ OBJECT_POOL = [
+    "Object_13.033",
+    "Object_10",
+    "canvas_ural-4320-rear_3_0.001",
+    "Object_44",
+    "ural4320",
+    "hull.001_ural-4320-hull_0_0.001",
+    "hull.001_ural-4320-hull_0_0",
+]
+
+ CLASS_MAP = {
+    "Object_13.033": 0,
+    "Object_10": 0,
+    "canvas_ural-4320-rear_3_0.001": 0,
+    "Object_44": 0,
+    "ural4320": 0,
+    "hull.001_ural-4320-hull_0_0.001": 0,
+    "hull.001_ural-4320-hull_0_0": 0,
+}

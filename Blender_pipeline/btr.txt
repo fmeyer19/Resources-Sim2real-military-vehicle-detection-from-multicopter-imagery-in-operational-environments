@@ -1,0 +1,103 @@
+ OBJECT_POOL = [
+    "MainFrame",
+    "Turret",
+    "Turret.002",
+    "Wheels.001",
+    "Turret.003",
+    "Wheels.002",
+    "Wheels.003",
+    "Turret.004",
+    "Turret.005",
+    "Wheels.004",
+    "Turret.006",
+    "Wheels.005",
+    "MainFrame.006",
+    "Turret.007",
+    "MainFrame.007",
+    "Turret.008",
+    "Turret.009",
+    "Wheels.008",
+    "hull.002",
+    "turret.002",
+    "hull.008",
+    "turret.005",
+    "hull.009",
+    "turret.006",
+    "hull.010",
+    "turret.007",
+    "hull.011",
+    "turret.008",
+    "Object_37.001",
+    "Object_95",
+    "Object_37.012",
+    "Object_95.001",
+    "Object_37.013",
+    "Object_95.002",
+    "Object_37.014",
+    "Object_95.003",
+    "Object_41.005",
+    "Object_95.004",
+]
+
+ CLASS_MAP = {
+    "MainFrame": 0,
+    "Turret": 0,
+    "Turret.002": 0,
+    "Wheels.001": 0,
+    "Turret.003": 0,
+    "Wheels.002": 0,
+    "Wheels.003": 0,
+    "Turret.004": 0,
+    "Turret.005": 0,
+    "Wheels.004": 0,
+    "Turret.006": 0,
+    "Wheels.005": 0,
+    "MainFrame.006": 0,
+    "Turret.007": 0,
+    "MainFrame.007": 0,
+    "Turret.008": 0,
+    "Turret.009": 0,
+    "Wheels.008": 0,
+    "hull.002": 0,
+    "turret.002": 0,
+    "hull.008": 0,
+    "turret.005": 0,
+    "hull.009": 0,
+    "turret.006": 0,
+    "hull.010": 0,
+    "turret.007": 0,
+    "hull.011": 0,
+    "turret.008": 0,
+    "Object_37.001": 0,
+    "Object_95": 0,
+    "Object_37.012": 0,
+    "Object_95.001": 0,
+    "Object_37.013": 0,
+    "Object_95.002": 0,
+    "Object_37.014": 0,
+    "Object_95.003": 0,
+    "Object_41.005": 0,
+    "Object_95.004": 0,
+}
+
+TURRETS = {
+    "MainFrame": "Turret",  # body vol=0.026 z=0.11 | turret vol=0.001 z=0.13
+    "Wheels.001": "Turret.002",  # body vol=0.026 z=0.04 | turret vol=0.001 z=0.12
+    "Wheels.002": "Turret.003",  # body vol=0.026 z=0.04 | turret vol=0.001 z=0.12
+    "Wheels.003": "Turret.004",  # body vol=0.026 z=0.04 | turret vol=0.001 z=0.12
+    "Wheels.004": "Turret.005",  # body vol=0.026 z=0.04 | turret vol=0.001 z=0.12
+    "Wheels.005": "Turret.006",  # body vol=0.026 z=0.04 | turret vol=0.001 z=0.12
+    "MainFrame.006": "Turret.007",  # body vol=0.026 z=0.11 | turret vol=0.001 z=0.12
+    "MainFrame.007": "Turret.008",  # body vol=0.026 z=0.11 | turret vol=0.001 z=0.12
+    "Wheels.008": "Turret.009",  # body vol=0.026 z=0.04 | turret vol=0.001 z=0.12
+    "hull.002": "turret.002",  # body vol=0.019 z=-0.00 | turret vol=0.001 z=0.14
+    "hull.008": "turret.005",  # body vol=0.019 z=-0.00 | turret vol=0.001 z=0.17
+    "hull.009": "turret.006",  # body vol=0.019 z=-0.00 | turret vol=0.001 z=0.14
+    "hull.010": "turret.007",  # body vol=0.019 z=-0.00 | turret vol=0.001 z=0.14
+    "hull.011": "turret.008",  # body vol=0.019 z=-0.00 | turret vol=0.001 z=0.14
+    "Object_37.001": "Object_95",  # body vol=0.018 z=-0.00 | turret vol=0.001 z=0.16
+    "Object_37.012": "Object_95.001",  # body vol=0.018 z=-0.00 | turret vol=0.001 z=0.16
+    "Object_37.013": "Object_95.002",  # body vol=0.018 z=-0.00 | turret vol=0.001 z=0.16
+    "Object_37.014": "Object_95.003",  # body vol=0.018 z=-0.00 | turret vol=0.001 z=0.16
+    "Object_41.005": "Object_95.004",  # body vol=0.018 z=-0.00 | turret vol=0.001 z=0.16
+}

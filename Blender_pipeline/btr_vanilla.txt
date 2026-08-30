@@ -1,0 +1,23 @@
+ OBJECT_POOL = [
+    	"MainFrame",
+    	"Turret",
+       	"hull.002",
+    	"turret.002",
+        "Object_37.001",
+    	"Object_95",
+]
+
+ CLASS_MAP = {
+    	"MainFrame": 1,
+    	"Turret": 1,
+       	"hull.002": 1,
+    	"turret.002": 1,
+       	"Object_37.001": 1,
+    	"Object_95": 1,
+}
+
+TURRETS = {
+    	"MainFrame": "Turret",  # body vol=0.026 z=0.11 | turret vol=0.001 z=0.13
+       	"hull.002": "turret.002",  # body vol=0.019 z=-0.00 | turret vol=0.001 z=0.14
+       	"Object_37.001": "Object_95",  # body vol=0.018 z=-0.00 | turret vol=0.001 z=0.16
+}

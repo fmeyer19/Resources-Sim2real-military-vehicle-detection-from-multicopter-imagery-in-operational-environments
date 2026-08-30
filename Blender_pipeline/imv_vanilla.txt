@@ -1,0 +1,21 @@
+ OBJECT_POOL = [
+    	"Object_3.002",
+    	"Object_4.010",
+    	"Object_110",
+    	"Object_56",
+    	"GAZ-2230_StaticPart1Mtl_0",
+    	"hull_gaz_2975-hull_0_0",
+    	"hull_gaz_2975-hull_0_0.005",
+   	"hull_foxhound-hull_0_0",
+]
+
+CLASS_MAP = {
+    	"Object_3.002": 2,
+    	"Object_4.010": 2,
+    	"Object_110": 2,
+    	"Object_56": 2,
+    	"GAZ-2230_StaticPart1Mtl_0": 2,
+    	"hull_gaz_2975-hull_0_0": 2,
+    	"hull_gaz_2975-hull_0_0.005": 2,
+    	"hull_foxhound-hull_0_0": 2,
+}
