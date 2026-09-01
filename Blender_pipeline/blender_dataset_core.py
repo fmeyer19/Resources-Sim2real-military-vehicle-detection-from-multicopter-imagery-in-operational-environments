@@ -59,12 +59,12 @@ class RenderSettings:
     Render engine and output resolution parameters.
     """
 
-    width: int = 640
+    width: int = 1920
     """
     Rendered image width in pixels.
     """
 
-    height: int = 640
+    height: int = 1080
     """
     Rendered image height in pixels.
     """
@@ -74,7 +74,7 @@ class RenderSettings:
     Cycles path-tracing samples per pixel.
     """
 
-    compute_device_type: str = "CUDA"
+    compute_device_type: str = "OPTIX"
     """
     Cycles compute backend, for example ``"CUDA"``, ``"OPTIX"``, ``"HIP"``, or
     ``"ONEAPI"``.
@@ -750,7 +750,7 @@ class HdrRotator(SceneEffect):
         if self._mapping is None:
             self._mapping = self._find_mapping()
         if self._mapping is not None:
-            self._mapping.inputs["Rotation"].default_value[0] = math.radians(random.uniform(0, 180))
+            self._mapping.inputs["Rotation"].default_value[0] = math.radians(random.uniform(0, 170))
 
 
 class RayCastProjector:

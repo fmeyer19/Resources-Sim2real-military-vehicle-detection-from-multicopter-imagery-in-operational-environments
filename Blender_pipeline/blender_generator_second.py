@@ -1,5 +1,7 @@
 """
-Second scene: a beach with barbed-wire fences.
+Second scene: forms a contrast to this and represents a meadow of taller grass with a small 
+watercourse running through its middle, bordered by sand, gravel and larger rocks. Scattered 
+trees and boulders provide occlusion.
 
 Places vehicles on a fixed grid of spawn slots, settles them with a physics drop,
 and renders them from an orbiting camera while the world texture is rotated per
@@ -24,23 +26,42 @@ from blender_dataset_core import (
 
 SCENE_FILE = "Second_scene.blend"
 """
-Scene file for this run, resolved against :data:`SCENE_ROOT`.
+Scene file for this run, resolved against :data:`SCENE_ROOT`. Enter the path to the
+scene the run is to render.
 """
 
 OBJECT_POOL = []
+"""
+Names of the vehicle meshes allowed to spawn. Paste the entries of the vehicle list
+belonging to the vehicles images are to be generated for.
+"""
 
 TURRETS = {}
+"""
+Hull-to-turret mapping of the pooled vehicles, taken from the same vehicle list.
+"""
 
 CLASS_MAP = {name: 0 for name in OBJECT_POOL}
+"""
+Class id of every pool entry, taken from the same vehicle list.
+"""
 
 HDR_NODE_NAME = "Mapping"
 
 SETTINGS = GenerationSettings(
     scene_path=SCENE_ROOT / SCENE_FILE,
+
+    # Objects that do not tolerate physics-based placement well.
     physics_ignore=["Object_4.010"],
+
     output_dir=Path(__file__).parent / "output",
+
+    # Collection of the Blender scene holding the models of the vehicle lists.
     vehicles_collection="Vehicles",
+
     object_pool=OBJECT_POOL,
+
+    # Scene elements that stay visible throughout the run.
     always_visible={
         "Landscape.001",
         "Cube",
@@ -59,16 +80,23 @@ SETTINGS = GenerationSettings(
         "Barbed wire fence.007",
         "rock_moss_set_02_rock13.002",
     },
+
     turrets=TURRETS,
     class_map=CLASS_MAP,
+
+    # Terrain of the scene.
     terrain_object="Landscape.001",
+
     use_physics_drop=True,
     physics_sim_frames=60,
-    objects_per_group=(8, 8),
-    cameras_per_group=1,
+
+    # Replaceable values shaping how a run is composed, see the documentation.
+    objects_per_group=(1, 8),
+    cameras_per_group=2,
     iterations=2,
 )
 
+# Fixed spawn positions of this scene.
 PLACEMENT = FixedPositions([
     (-3.9, 2.3), (-3.9, 1.7), (-3.9, 0.6), (-3.9, -0.2), (-3.9, -1), (-3.9, -2.7),
     (-2.5, 2.3), (-2.5, 1.7), (-2.5, 0.6), (-2.5, -0.2), (-2.5, -1), (-2.5, -2.7),
@@ -77,7 +105,8 @@ PLACEMENT = FixedPositions([
     (2.5, 2.3), (2.5, 1.7), (2.5, 0.6), (2.5, -0.2), (2.5, -1), (2.5, -2.7),
 ])
 
-CAMERA = OrbitCamera(radius_range=(3.0, 7.0), elevation_range=(15, 85))
+# Adjustable camera parameters.
+CAMERA = OrbitCamera(radius_range=(3.0, 15.0), elevation_range=(15, 85))
 
 
 if __name__ == "__main__":

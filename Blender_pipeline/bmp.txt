@@ -1,4 +1,4 @@
- OBJECT_POOL =[
+OBJECT_POOL =[
     "hull_bmp1-hull_0_0",
     "turret_bmp1-turret_1_0",
     "josef",
@@ -73,7 +73,7 @@ TURRETS = {
     "bmp-2m_hull.004": "bmp-2m_turret.004",  # body vol=0.008 z=-0.01 | turret vol=0.005 z=0.02
 }
 
- CLASS_MAP = {
+CLASS_MAP = {
     "hull_bmp1-hull_0_0": 0,
     "turret_bmp1-turret_1_0": 0,
     "josef": 0,

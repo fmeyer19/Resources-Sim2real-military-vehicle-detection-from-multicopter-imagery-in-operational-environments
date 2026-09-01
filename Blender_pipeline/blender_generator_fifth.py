@@ -233,37 +233,62 @@ class OrbitingDistractor(SceneEffect):
 
 SCENE_FILE = "Fifth_scene.blend"
 """
-Scene file for this run, resolved against :data:`SCENE_ROOT`.
+Scene file for this run, resolved against :data:`SCENE_ROOT`. Enter the path to the
+scene the run is to render.
 """
 
 OBJECT_POOL = []
+"""
+Names of the vehicle meshes allowed to spawn. Paste the entries of the vehicle list
+belonging to the vehicles images are to be generated for.
+"""
 
 TURRETS = {}
+"""
+Hull-to-turret mapping of the pooled vehicles, taken from the same vehicle list.
+"""
 
 CLASS_MAP = {name: 0 for name in OBJECT_POOL}
+"""
+Class id of every pool entry, taken from the same vehicle list.
+"""
 
 SETTINGS = GenerationSettings(
     scene_path=SCENE_ROOT / SCENE_FILE,
+
     output_dir=Path(__file__).parent / "output",
+
+    # Collection of the Blender scene holding the models of the vehicle lists.
     vehicles_collection="Vehicles",
+
     object_pool=OBJECT_POOL,
+
+    # Scene elements that stay visible throughout the run.
     always_visible={"Plane", "Plane.002", "Plane.003"},
+
     turrets=TURRETS,
     class_map=CLASS_MAP,
+
+    # Terrain of the scene.
     terrain_object="Plane",
+
     use_physics_drop=False,
     physics_sim_frames=60,
+
+    # Replaceable values shaping how a run is composed, see the documentation.
     objects_per_group=(1, 1),
     cameras_per_group=1,
     iterations=2,
 )
 
+# Spawn position of this scene, given as a range whose bounds coincide.
 PLACEMENT = BoundedRandomPositions(
     x_range=(-3.5, -3.5),
     y_range=(1.5, 1.5),
     min_spacing=0.0,
 )
 
+# Adjustable camera parameters.
 CAMERA = PathLookAtCamera(
     path_xy=[(0.0, 1.8), (0.0, -1.8), (-3.5, -1.8)],
     height_range=(2.0, 5.0),
@@ -273,11 +298,13 @@ CAMERA = PathLookAtCamera(
     zoom_range=(0.8, 1.6),
 )
 
+# Planes carrying the background and the donor planes their materials are taken from.
 BACKGROUND = BackgroundRandomizer(
     target_planes=["Plane", "Plane.002", "Plane.003"],
     source_planes=[f"Plane.{i:03d}" for i in range(4, 14)],
 )
 
+# Effects of this scene: background randomization and the occluding distractor.
 EFFECTS = [
     BACKGROUND,
     OrbitingDistractor(

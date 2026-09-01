@@ -1,4 +1,4 @@
- OBJECT_POOL = [
+OBJECT_POOL = [
     	"MainFrame",
     	"Turret",
        	"hull.002",
@@ -7,7 +7,7 @@
     	"Object_95",
 ]
 
- CLASS_MAP = {
+CLASS_MAP = {
     	"MainFrame": 1,
     	"Turret": 1,
        	"hull.002": 1,
