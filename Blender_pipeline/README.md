@@ -2,7 +2,7 @@
 
 Generates YOLO-format object-detection datasets by placing vehicle models into five different Blender scenes, rendering them from many camera angles, and writing bounding-box labels automatically.
 
-This pipeline was developed for the master's thesis <THESIS_TITLE> and produced the **Blender-raw** dataset, which is available on [Roboflow](<ROBOFLOW_URL>). The parameter values used for that dataset are documented in the [technical documentation (PDF)](<PDF_PATH>). This README covers setup and usage. The internal mechanisms (generation loop, turret mounting, bounding-box computation, camera models and controlled occlusion) are described in detail in the [technical documentation (PDF)](<PDF_PATH>).
+This pipeline was developed for the master's thesis *Sim-to-real military vehicle detection from multicopter imagery in operational environments* and produced the **Blender-raw** dataset, which is available on [Roboflow](https://universe.roboflow.com/f-m-mwqdi/blender-k87vt). This README covers setup and usage. The internal mechanisms (generation loop, turret mounting, bounding-box computation, camera models and controlled occlusion) and the parameter values used for the dataset are described in detail in the [technical documentation (PDF)](Blender_pipeline_documentation.pdf).
 
 This guide is written for **Windows** users.
 
@@ -20,7 +20,7 @@ This guide is written for **Windows** users.
 | `blender_generator_fifth.py` | Scene 5 — studio scene with textured backdrop planes, a camera on a fixed path and an occluding distractor |
 | `list_collections_objects.py` | Helper for listing object names / building config dictionaries |
 | `visualizer.py` | Draws YOLO boxes on rendered images for a quick sanity check |
-| `<POOL_FILES>` | Vehicle pools, class maps and turret rosters used for the published dataset. They are pasted into the scene scripts before a run. |
+| `*.txt` | Vehicle lists with pool entries, class maps and turret rosters. Their entries are pasted into a scene script before a run. |
 
 > **Important:** All five scene scripts import `blender_dataset_core.py`. They must stay **in the same folder** as the core file. Each scene script adds its own folder to Python's path automatically, so no extra setup is needed as long as they sit together.
 
@@ -59,7 +59,7 @@ The default is a `resources` folder next to the scripts. Each scene script then 
 SCENE_FILE = "First_scene.blend"
 ```
 
-The script builds `scene_path` as `SCENE_ROOT / SCENE_FILE`. If a scene file has a different name or lives elsewhere, change that script's `SCENE_FILE` (a bare filename is joined to `SCENE_ROOT`; a full path is used as-is).
+The script builds `scene_path` as `SCENE_ROOT / SCENE_FILE`. If a scene file has a different name or lives elsewhere, change that script's `SCENE_FILE`. A bare filename is joined to `SCENE_ROOT`, while a full path is used unchanged.
 
 ### 3. Fill in the vehicle pool
 
@@ -71,7 +71,7 @@ TURRETS = {}
 CLASS_MAP = {name: 0 for name in OBJECT_POOL}
 ```
 
-Before a run, paste the entries for the vehicles you want to render from the pool files into `OBJECT_POOL`, `TURRETS` and `CLASS_MAP`. The default `CLASS_MAP` assigns class 0 to every vehicle, so it must be replaced by the real class map.
+Before a run, paste the entries for the vehicles you want to render from the vehicle lists (the `.txt` files in this folder) into `OBJECT_POOL`, `TURRETS` and `CLASS_MAP`. The default `CLASS_MAP` assigns class 0 to every vehicle, so it must be replaced by the real class map.
 
 ### 4. (Optional) Add Blender to your PATH
 
@@ -299,7 +299,7 @@ Blender isn't on your PATH. Use the full quoted path to `blender.exe`, or add it
 Always wrap paths containing spaces in double quotes in the command line, e.g. `"C:\Program Files\..."`.
 
 **Nothing appears in `output`**
-Confirm the script printed `Done. Rendered N frames`. If `N` is 0, the object pool may be empty or all objects fell outside the camera frame — check the console output for warnings.
+Confirm the script printed `Done. Rendered N frames`. If `N` is 0, the object pool may be empty or all objects fell outside the camera frame. Check the console output, which reports the pool size and the number of labels per frame.
 
 ---
 
@@ -322,20 +322,22 @@ A run is fully determined by its scene file and the values in its scene script. 
 
 ## Asset credits
 
-The scenes and vehicles are built from third-party assets: vehicle models from Sketchfab, HDRI panoramas, assets and textures from BlenderKit, and tile and camouflage textures created with the Camo Pattern Generator. All sources with their authors and licenses are listed in the [technical documentation (PDF)](<PDF_PATH>).
+The scenes and vehicles are built from third-party assets: vehicle models from Sketchfab, HDRI panoramas, assets and textures from BlenderKit, and tile and camouflage textures created with the Camo Pattern Generator. All sources with their authors and licenses are listed in the [technical documentation (PDF)](Blender_pipeline_documentation.pdf).
 
 ---
 
 ## Citation
 
-If you use this pipeline or the Blender-raw dataset, please cite:
+If you use this pipeline, please cite:
 
 ```
-<CITATION>
+Florian Meyer (2026). Synthetic Dataset Generator (Blender) [Computer software].
 ```
 
----
-
-## License
-
-<LICENSE>
+```bibtex
+@software{meyer2026blenderpipeline,
+  author = {Meyer, Florian},
+  title  = {Synthetic Dataset Generator (Blender)},
+  year   = {2026}
+}
+```
