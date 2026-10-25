@@ -2,7 +2,7 @@
 
 Generates YOLO-format object-detection datasets by placing vehicle models into five different Blender scenes, rendering them from many camera angles, and writing bounding-box labels automatically.
 
-This pipeline was developed for the master's thesis *Sim-to-real military vehicle detection from multicopter imagery in operational environments* and produced the **Blender-raw** dataset, which is available on [Roboflow](https://universe.roboflow.com/f-m-mwqdi/blender-k87vt). This README covers setup and usage. The internal mechanisms (generation loop, turret mounting, bounding-box computation, camera models and controlled occlusion) and the parameter values used for the dataset are described in detail in the [technical documentation (PDF)](Blender_pipeline_documentation.pdf).
+This pipeline was developed for the thesis *Sim-to-real military vehicle detection from multicopter imagery in operational environments* and produced the **Blender-raw** dataset, which is available on [Roboflow](https://universe.roboflow.com/f-m-mwqdi/blender-k87vt). This README covers setup and usage. The internal mechanisms (generation loop, turret mounting, bounding-box computation, camera models and controlled occlusion) and the parameter values used for the dataset are described in detail in the [technical documentation (PDF)](Blender_pipeline_documentation.pdf).
 
 This guide is written for **Windows** users.
 
@@ -330,14 +330,12 @@ The scenes and vehicles are built from third-party assets: vehicle models from S
 
 If you use this pipeline, please cite:
 
-```
-Florian Meyer (2026). Synthetic Dataset Generator (Blender) [Computer software].
-```
-
 ```bibtex
 @software{meyer2026blenderpipeline,
-  author = {Meyer, Florian},
-  title  = {Synthetic Dataset Generator (Blender)},
-  year   = {2026}
+  author  = {Meyer, Florian},
+  title   = {Synthetic Dataset Generator (Blender)},
+  year    = {2026},
+  version = {1.0},
+  url     = {https://github.com/fmeyer19/Resources-Sim2real-military-vehicle-detection-from-multicopter-imagery-in-operational-environments/tree/main/Blender_pipeline}
 }
 ```
